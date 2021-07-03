@@ -1,4 +1,7 @@
 # `hyperdict`
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/j0fiN/hyperdict/hyperdict?logo=github&style=flat-square)](https://github.com/j0fiN/hyperdict/actions/workflows/main.yml)
+[![PyPI - License](https://img.shields.io/pypi/l/hyperdict?logo=readthedocs&style=flat-square)](https://github.com/j0fiN/hyperdict/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/hyperdict?logo=pypi&style=flat-square)](https://pypi.org/project/hyperdict/)
 ### *Python dictionaries, but on steroids.*
 `hyperdict` works just like the old dictionary but with more additional features. It makes working with dictionaries relatively quicker and easier!
 
