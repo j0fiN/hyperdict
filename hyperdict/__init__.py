@@ -7,7 +7,7 @@
 '''
     HYPERDICT\n
     Python dictionaries, but on steroids.\n
-    Documentation: https://github.com/j0fiN/HyperDict-Python\n
+    Documentation: https://github.com/j0fiN/hyperdict\n
 
     `hyperdict` works just like the old dictionary
     but with more additional features.
