@@ -171,10 +171,16 @@ tests
 `pytest`
 ```sh-session
 $ pcmd run t
-tests...
 
 # or 
 
 $ poetry run pytest -v
-tests...
+```
+`flake8`
+```sh-session
+$ pcmd run f
+
+# or
+
+$ flake8 hyperdict/ tests/ --ignore=F401,W504
 ```
