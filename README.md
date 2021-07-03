@@ -5,7 +5,7 @@
 - Built for clean and shorter adders, getters, and setters.
 
 - It significantly reduces the lines of code written for dictionary manipulations.
-- Variable names need not be re-written to build the hyperdict ([see here](https://github.com/j0fiN/HyperDict-Python#to_hd(*a)-function)).
+- Variable names need not be re-written to build the hyperdict ([see here](https://github.com/j0fiN/HyperDict-Python#to_hda-function)).
 - `hyperdict` retrieve keys when values are given (value-key pairs). 
 - Inbuilt unary operations developed with specific functionalities.
 - All inbuilt python dictionary methods work in `hyperdict`.
