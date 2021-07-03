@@ -4,7 +4,7 @@
 # Jofin F Archbald
 # jofinfab@gmail.com
 #
-import typing as t
+from typing import Any, Optional, Union
 import sys
 import ast
 import warnings
@@ -21,7 +21,7 @@ class NoValue:
     '''
     No Value class.
     '''
-    def __new__(cls, obj: t.Any = '<<|randome241#@-1215%string|>>'):
+    def __new__(cls, obj: Any = '<<|randome241#@-1215%string|>>') -> Any:
         if obj == '<<|randome241#@-1215%string|>>':
             return cls
         else:
@@ -32,7 +32,7 @@ class NoKey:
     '''
     No Key class.
     '''
-    def __new__(cls, obj='<<|randome241#@-1215%string|>>'):
+    def __new__(cls, obj: Any = '<<|randome241#@-1215%string|>>') -> Any:
         if obj == '<<|randome241#@-1215%string|>>':
             return cls
         else:
@@ -47,7 +47,7 @@ class __EachHyperDictAssist:
         return _UUID_EACH_FUNCTION
 
 
-def _keyerror(errors):
+def _keyerror(errors) -> None:
     errs = [i.args[0] for i in errors]
     msg = "Missing keys: "
     for i in errs:
@@ -59,7 +59,7 @@ def _keyerror(errors):
 # ======================HyperDict Class=========================
 class HyperDict:
     # Magic methods
-    def __init__(self, dict_obj=None, **kw):
+    def __init__(self, dict_obj: Optional[dict] = None, **kw) -> None:
         if dict_obj is None:
             self.__hyper = {}
         else:
@@ -77,7 +77,7 @@ class HyperDict:
         except Exception:
             self.no_key = '<<|randome241#@-1215%string|>>'
 
-    def __getitem__(self, item):
+    def __getitem__(self, item: Union[tuple, int, str, bool]) -> Any:
         if type(item).__name__ == 'tuple':
             _values = list()
             for key in item:
@@ -86,7 +86,8 @@ class HyperDict:
         else:
             return self.__hyper.get(item, NoKey(self.no_key))
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key: Union[tuple, int, str, bool],
+                    value: Any) -> None:
         if type(key).__name__ in 'tuple':
             if (type(value).__name__ == 'list' and
                     value[-1] == _UUID_EACH_FUNCTION):
@@ -100,7 +101,7 @@ class HyperDict:
             self.__hyper[key] = value
         self.__update()
 
-    def __delitem__(self, key):
+    def __delitem__(self, key: Union[tuple, int, str, bool]) -> None:
         __errors = []
         if type(key).__name__ in 'tuple':
             for i in key:
@@ -184,7 +185,9 @@ class HyperDict:
         return self.__hyper.values()
 
     def clear(self):
-        return self.__hyper.clear()
+        cl = self.__hyper.clear()
+        self.__update()
+        return cl
 
     def copy(self):
         return self.__hyper.copy()
@@ -204,20 +207,32 @@ class HyperDict:
 
     def pop(self, key, default=_UUID_POP_METHOD):
         if _UUID_POP_METHOD == default:
-            return self.__hyper.pop(key)
+            __p = self.__hyper.pop(key)
+            self.__update()
+            return __p
         else:
-            return self.__hyper.pop(key, default)
+            __p = self.__hyper.pop(key, default)
+            self.__update()
+            return __p
 
     def update(self, dict=None, **kw):
         if dict is None:
-            return self.__hyper.update()
+            __d = self.__hyper.update()
+            self.__update()
+            return __d
         else:
-            return self.__hyper.update(dict)
+            __d = self.__hyper.update(dict)
+            self.__update()
+            return __d
 
-        if kw == {}:
-            return self.__hyper.update(**kw)
+        if kw != {}:
+            __d = self.__hyper.update(**kw)
+            self.__update()
+            return __d
         else:
-            return self.__hyper.update()
+            __d = self.__hyper.update()
+            self.__update()
+            return __d
 
     # HyperDict methods
     def hash(self):
