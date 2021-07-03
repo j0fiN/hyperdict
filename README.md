@@ -98,6 +98,8 @@ cpy_d = +d # Copy Operation: Returns a python dictionary deep-copied from the hy
 Creates a `hyperdict` using the variable name as keys.  
 
 You need not write the key names along with values anymore!
+
+> *Warning*: This function does not work in python console, since the nodes from AST are taken as a single expression resulting in None for the expression.
 ```python
 name, age, skills = foo_get_data()
 
