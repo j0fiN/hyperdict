@@ -1,6 +1,6 @@
 #
 # hyperdict - Python dictionaries, but on steroids.
-# 
+#
 # Jofin F Archbald
 # jofinfab@gmail.com
 #
@@ -9,8 +9,8 @@
     Python dictionaries, but on steroids.\n
     Documentation: https://github.com/j0fiN/HyperDict-Python\n
 
-    `hyperdict` works just like the old dictionary 
-    but with more additional features. 
+    `hyperdict` works just like the old dictionary
+    but with more additional features.
     It makes working with dictionaries relatively quicker and easier!
 
     USAGE
@@ -19,13 +19,13 @@
     >>> import hyperdict as hd
     >>> d = hd.HyperDict()
 
-    
+
     >>> d[1, 2, 'name'] = None
     HyperDict({1: None, 2: None, 'name': None})
 
     Using each() function
     >>> -d # empties the dictionary
-    >>> d['name', 'age', 'skills'] = hd.each('Magnus', 31, ['chess', 'football'])
+    >>> d['name', 'age'] = hd.each('Magnus', 31)
 
     Getters
     >>> d['name', 'age']
@@ -64,6 +64,12 @@
     >>> -h # Clear operator
     HyperDict({})
 '''
-from .hyperdict import *
+from .hyperdict import (
+    NoKey,
+    NoValue,
+    HyperDict,
+    each,
+    to_hd
+)
 __version__ = '1.0.0'
 __author__ = 'Jofin F Archbald <jofin@gmail.com>'

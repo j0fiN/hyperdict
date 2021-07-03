@@ -2,3 +2,4 @@ hi: echo Hi from pcmd!
 t: poetry run pytest -v
 tr: poetry run py trial.py
 d: poetry run python hyperdict/hyperdict.py
+f: flake8 hyperdict/ tests/ --ignore=F401,W504

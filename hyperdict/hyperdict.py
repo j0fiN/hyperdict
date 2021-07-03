@@ -1,6 +1,6 @@
 #
 # hyperdict - Python dictionaries, but on steroids.
-# 
+#
 # Jofin F Archbald
 # jofinfab@gmail.com
 #
@@ -10,15 +10,18 @@ import ast
 import warnings
 import copy
 
-_UUID_EACH_FUNCTION = '64c7c93b7ecc4e09989ffbfef3e58d2fea7536f88d2e49f6b2917b14f8fc2603'
-_UUID_POP_METHOD = 'f2f83f072c75445b9eb0e6dce2036e469b24e1582165497881edd250baaccc44'
+_UUID_EACH_FUNCTION = '64c7c93b7ecc4e09989ffbfef3e5 \
+                      8d2fea7536f88d2e49f6b2917b14f8fc2603'
+_UUID_POP_METHOD = 'f2f83f072c75445b9eb0e6dce2036e469 \
+                      b24e1582165497881edd250baaccc44'
 
-#==================Helper classes==============================
+
+# ==================Helper classes==============================
 class NoValue:
     '''
     No Value class.
     '''
-    def __new__(cls, obj='<<|randome241#@-1215%string|>>'):
+    def __new__(cls, obj: t.Any = '<<|randome241#@-1215%string|>>'):
         if obj == '<<|randome241#@-1215%string|>>':
             return cls
         else:
@@ -40,7 +43,7 @@ class __EachHyperDictAssist:
     '''
     Helper class for each function.
     '''
-    def __new__(cls): 
+    def __new__(cls):
         return _UUID_EACH_FUNCTION
 
 
@@ -52,7 +55,8 @@ def _keyerror(errors):
     msg = msg[:-2]
     warnings.warn(msg, Warning, stacklevel=3)
 
-#======================HyperDict Class=========================
+
+# ======================HyperDict Class=========================
 class HyperDict:
     # Magic methods
     def __init__(self, dict_obj=None, **kw):
@@ -66,14 +70,13 @@ class HyperDict:
         self.i = tuple(self.__hyper.items())
         try:
             self.no_val = kw['no_val']
-        except:
+        except Exception:
             self.no_val = '<<|randome241#@-1215%string|>>'
         try:
             self.no_key = kw['no_key']
-        except:
+        except Exception:
             self.no_key = '<<|randome241#@-1215%string|>>'
 
-    
     def __getitem__(self, item):
         if type(item).__name__ == 'tuple':
             _values = list()
@@ -82,11 +85,11 @@ class HyperDict:
             return tuple(_values)
         else:
             return self.__hyper.get(item, NoKey(self.no_key))
-            
-    
+
     def __setitem__(self, key, value):
         if type(key).__name__ in 'tuple':
-            if type(value).__name__ == 'list' and value[-1] == _UUID_EACH_FUNCTION:
+            if (type(value).__name__ == 'list' and
+                    value[-1] == _UUID_EACH_FUNCTION):
                 value.pop()
                 for neu, val in zip(key, value):
                     self.__hyper[neu] = val
@@ -96,7 +99,6 @@ class HyperDict:
         else:
             self.__hyper[key] = value
         self.__update()
-    
 
     def __delitem__(self, key):
         __errors = []
@@ -113,42 +115,35 @@ class HyperDict:
                 del self.__hyper[key]
             except KeyError as err:
                 _keyerror([err])
-
-        
         self.__update()
-        
-    
+
     def __repr__(self):
         return "HyperDict(" + str(self.__hyper) + ')'
 
     def __str__(self):
         return "HyperDict(" + str(self.__hyper) + ')'
 
-
     def __iter__(self):
         self.x = -1
         return self
 
-
     def __next__(self):
         neu = list(self.__hyper.keys())
-        if self.x < len(neu)-1:
+        if self.x < len(neu) - 1:
             self.x += 1
             return list(self.__hyper.keys())[self.x]
         else:
             raise StopIteration
 
-
     def __hash__(self):
         return hash(str(self.__dict__))
-
 
     def __call__(self, *a):
         if a == ():
             return {i: self.__get_key(i) for i in self.v}
-        
+
         try:
-            trial = a[1] # to check if list is singular or not
+            trial = a[1]  # to check if list is singular or not
             del trial
             result = []
             for i in a:
@@ -156,7 +151,6 @@ class HyperDict:
             return tuple(result)
         except IndexError:
             return self.__get_key(a[0])
-
 
     def __invert__(self):
         __lis = self.__hyper
@@ -167,59 +161,46 @@ class HyperDict:
 
     def __pos__(self):
         return copy.deepcopy(self.__hyper)
-            
 
     def __neg__(self):
         self.__hyper = {}
         self.__update()
         return self
 
-
     def __dict__(self):
         return self.__hyper
 
-
     def __contains__(self, key):
         return self.__hyper.__contains__(key)
-
 
     # Dicitionary methods
     def items(self):
         return self.__hyper.items()
 
-
     def keys(self):
         return self.__hyper.keys()
-
 
     def values(self):
         return self.__hyper.values()
 
-
     def clear(self):
         return self.__hyper.clear()
 
-    
     def copy(self):
         return self.__hyper.copy()
 
-    
     def fromkeys(self, seq, val=None):
         self.__hyper = self.__hyper.fromkeys(seq, val)
         return self.__hyper
 
-
     def get(self, key, val=None):
         return self.__hyper.get(key, val)
-
 
     def setdefault(self, key, val=None):
         return self.__hyper.setdefault(key, val)
 
-
     def popitem(self):
         return self.__hyper.popitem()
-
 
     def pop(self, key, default=_UUID_POP_METHOD):
         if _UUID_POP_METHOD == default:
@@ -227,18 +208,16 @@ class HyperDict:
         else:
             return self.__hyper.pop(key, default)
 
-
     def update(self, dict=None, **kw):
         if dict is None:
             return self.__hyper.update()
         else:
             return self.__hyper.update(dict)
-        
+
         if kw == {}:
             return self.__hyper.update(**kw)
         else:
             return self.__hyper.update()
-
 
     # HyperDict methods
     def hash(self):
@@ -246,12 +225,11 @@ class HyperDict:
         Returns hash for the dictionary exclusively.
         >>> d.hash() # Hash of the dictionary only.
         123...
-        >>> hash(d) # Hash of the complete instance(including cache and other attributes)
+        >>> hash(d) # Hash of the complete instance.
         321...
 
         '''
         return hash(str(self.__hyper))
-
 
     def change_no_value(self, obj):
         '''
@@ -259,13 +237,11 @@ class HyperDict:
         '''
         self.no_val = obj
 
-
     def change_no_key(self, obj):
         '''
         Change the default when an input key not found.
         '''
         self.no_key = obj
-
 
     # Private methods
     def __get_key(self, value):
@@ -282,7 +258,7 @@ class HyperDict:
             if value == i:
                 indices.append(count)
             count += 1
-        
+
         if indices == []:
             return NoValue(self.no_val)
         else:
@@ -292,14 +268,12 @@ class HyperDict:
                 return self.__key_cache[value]
             except TypeError:
                 return result_tup
-            
 
     def __update(self):
         self.k = list(self.__hyper.keys())
         self.v = list(self.__hyper.values())
         self.i = tuple(self.__hyper.items())
         self.__clear_key_cache()
-    
 
     def __clear_key_cache(self):
         self.__key_cache = {}
@@ -311,10 +285,11 @@ def __argument_name(node):
         return node.id
     elif isinstance(node, ast.Attribute):
         return node.attr
-    elif (isinstance(node, ast.Subscript) and isinstance(node.slice, ast.Index) and
-        isinstance(node.slice.value, ast.Str)):
+    elif (isinstance(node, ast.Subscript) and
+          isinstance(node.slice, ast.Index) and
+          isinstance(node.slice.value, ast.Str)):
         return node.slice.value.s
-    elif(isinstance(node, ast.Call)):
+    elif isinstance(node, ast.Call):
         return node.func.id
     else:
         raise TypeError(f'Cannot extract name from {node}')
@@ -331,23 +306,26 @@ def to_hd(*args):
     '''
     try:
         import executing
-    except:
-        raise ImportError("""This function needs execution python package \
-                                Install using \npip install execution""")
+    except ImportError:
+        msg = """This function needs execution python package \
+                Install using \npip install execution"""
+        raise ImportError(msg)
     frame = sys._getframe(1)
     node = executing.Source.executing(frame).node
-    return HyperDict({__argument_name(node): arg for node, arg  in zip(node.args, args)})
-    
+    return HyperDict({__argument_name(node): arg
+                     for node, arg in zip(node.args, args)})
+
 
 def each(*arr):
     '''
-    Hyperdict assignment helper to assign multiple keys at the same time.
+    Hyperdict assignment helper to assign
+    multiple keys at the same time.
 
     >>> import hyperdict as hd
     >>> d = hd.HyperDict()
-    >>> d['name', 'age', 'skill'] = hd.each('Magnus', 31, ['Chess', 'Football'])
-    >>> d       
-    HyperDict({'name': 'Magnus', 'age': 31, 'skill': ['Chess', 'Football']})
+    >>> d['name', 'age'] = hd.each('Magnus', 31)
+    >>> d
+    HyperDict({'name': 'Magnus', 'age': 31})
     '''
     arr = list(arr)
     arr.append(__EachHyperDictAssist())
