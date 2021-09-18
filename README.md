@@ -157,7 +157,7 @@ This project is licensed under the terms of the [Apache License 2.0](https://git
 This package is developed using:
  - [poetry](https://github.com/python-poetry): package and dependency manager.
  - [pytest](https://github.com/pytest-dev): tests.
- - [pcmd](https://j0fin.github.io/pcmd/user_guide.html):  command line shortener.
+ - [pcmd](https://j0fin.github.io/pcmd/):  command line shortener.
 
  The whole wrapper is in a single file `hyperdict.py`.
  ```bash
