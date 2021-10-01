@@ -145,6 +145,8 @@ help(hd)
 ## In-built dictionary methods
 ***All the methods of python inbuilt dictionary works just the same in hyperdict.***
 
+## Hands on!
+Try out hyperdict in using the sandbox.
 
 ---
 ## Meta data
