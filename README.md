@@ -2,6 +2,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/j0fiN/hyperdict/hyperdict?logo=github&style=flat-square)](https://github.com/j0fiN/hyperdict/actions/workflows/main.yml)
 [![PyPI - License](https://img.shields.io/pypi/l/hyperdict?logo=readthedocs&style=flat-square)](https://github.com/j0fiN/hyperdict/blob/main/LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/hyperdict?logo=pypi&style=flat-square)](https://pypi.org/project/hyperdict/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/j0fiN/hyperdict/blob/main/tutorials/hyperdict_sandbox.ipynb)
 ### *Python dictionaries, but on steroids.*
 `hyperdict` works just like the old dictionary but with more additional features. It makes working with dictionaries relatively quicker and easier!
 
@@ -146,7 +147,9 @@ help(hd)
 ***All the methods of python inbuilt dictionary works just the same in hyperdict.***
 
 ## Hands on!
-Try out hyperdict in using the sandbox.
+Try out hyperdict using the sandbox.  
+  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/j0fiN/hyperdict/blob/main/tutorials/hyperdict_sandbox.ipynb)
 
 ---
 ## Meta data
